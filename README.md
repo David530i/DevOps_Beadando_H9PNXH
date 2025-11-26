@@ -164,3 +164,18 @@ PowerShell ablakban  a projekt mappajaban:
 # 6.3 Kontener leallitasa Windows alatt
 docker stop devops-beadando-h9pnxh-container
 docker rm devops-beadando-h9pnxh-container
+
+# 7 CI - GitHub Actions + GitHub Container Registry
+
+A projekt repo tartalmaz egy GitHub Actions workflow-t:
+helye: .github/workflows/ci.yml
+Ennek a funkcioja, hogy a main branchre erkezo push eseten automatikusan buildeli a Java + Spring Boot alkalmazast Mavennel majd Docker image-et keszit
+vegul pusholja az image-et a GitHub Container Registry-be.
+
+Az image neve: ghcr.io/david530i/devops-beadando-h9pnxh:latest
+
+# 7.1 Image lehuzasa es futtatasa registry-bol
+docker pull ghcr.io/david530i/devops-beadando-h9pnxh:latest
+docker run -p 8080:8080 ghcr.io/david530i/devops-beadando-h9pnxh:latest
+
+Az alkalmazas ezutan a http://localhost:8080/ cimen erheto el a kontenerbol.
